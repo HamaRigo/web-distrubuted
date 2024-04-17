@@ -45,6 +45,30 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-maven-plugin</artifactId>
+                <version>2.0.7</version>
+                <configuration>
+                    <outputFileName>${project.artifactId}-swagger</outputFileName>
+                    <outputPath>${project.build.directory}/swagger</outputPath>
+                    <openapiFilePath>${project.build.outputDirectory}/openapi-info.json</openapiFilePath>
+                    <outputFormat>JSONANDYAML</outputFormat>
+<!--                    <prettyPrint>TRUE</prettyPrint>-->
+                    <resourcePackages>
+<!--                        com.programming.techie-->
+                        <package>com.mycompany.api.resource</package>
+                    </resourcePackages>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>resolve</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
